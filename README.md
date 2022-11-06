@@ -6,5 +6,7 @@ As for the colorscheme loading logic, I referred to [dracula.nvim](https://githu
 Thank you.
 
 ## TODO
--[] Treesitter support
--[] Config support
+
+- [] Treesitter support
+
+- [] Config support
