@@ -7,6 +7,6 @@ Thank you.
 
 ## TODO
 
-- [] Treesitter support
+- [ ] Treesitter support
 
-- [] Config support
+- [ ] Config support
