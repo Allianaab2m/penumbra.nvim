@@ -1,0 +1,33 @@
+[colors]
+ansi = [
+    '#181B1F', # shade
+    '#F58C81', # red
+    '#54C794', # green
+    '#A9B852', # yellow
+    '#6EB2FD', # blue
+    '#B69CF6', # purple
+    '#00C4D7', # cyan
+    '#FFF7ED', # sun
+]
+background = '#181B1F'
+brights = [
+    '#3E4044', # shade+
+    '#F58C81', # red
+    '#54C794', # green
+    '#A9B852', # yellow
+    '#6EB2FD', # blue
+    '#B69CF6', # purple
+    '#00C4D7', #cyan
+    '#FFFDFB', # sun+
+]
+cursor_bg = '#FFF7ED' # sun
+cursor_border = '#24272B' #shade-
+cursor_fg = '#181B1F' #shade
+foreground = '#FFF7ED' # sun
+selection_bg = '#00C4D7' # cyan
+selection_fg = '#FFF7ED' # sun
+
+[colors.indexed]
+
+[metadata]
+name = 'penumbra-dark-plusplus'
