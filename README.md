@@ -1,4 +1,4 @@
-# 🌘 penumbra.nvim(WIP)
+# 🌘 penumbra.nvim
 
 Original color theme: [nealmckee/penumbra](https://github.com/nealmckee/penumbra)
 
