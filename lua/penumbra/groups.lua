@@ -1,0 +1,397 @@
+local function setup(configs)
+  local colors = configs.colors
+  colors.bg = configs.colors.shade
+  colors.fg = configs.colors.sky
+
+  if configs.light then
+    colors = {
+      sun_p = configs.colors.shade_m,
+      sun =  configs.colors.shade,
+      sun_m = configs.colors.shade_p,
+      sky_p = configs.colors.sky_m,
+      sky = configs.colors.sky,
+      sky_m = configs.colors.sky_p,
+      shade_p = configs.colors.sun_m,
+      shade = configs.colors.sun,
+      shade_m = configs.colors.sun_p,
+
+      red = configs.colors.red,
+      orange = configs.colors.orange,
+      yellow = configs.colors.yellow,
+      green = configs.colors.green,
+      cyan = configs.colors.cyan,
+      blue = configs.colors.blue,
+      purple = configs.colors.purple,
+      magenta = configs.colors.magenta,
+      bg = configs.colors.sun,
+      fg = configs.colors.sky
+    }
+  end
+
+
+  local endOfBuffer = {
+    fg = configs.show_end_of_buffer and colors.visual or colors.bg
+  }
+
+  return {
+    Normal = { fg = colors.fg, bg = colors.bg },
+    NormalFloat = { fg = colors.fg, bg = colors.bg },
+    Comment = { fg = colors.sky_m, italic = configs.italic_comment },
+    Constant = { fg = colors.yellow },
+    String = { fg = colors.yellow },
+    Character = { fg = colors.green },
+    Number = { fg = colors.orange },
+    Boolean = { fg = colors.cyan },
+    Float = { fg = colors.orange },
+    FloatBorder = { fg = colors.sun_m },
+    Operator = { fg = colors.purple },
+    Keyword = { fg = colors.purple },
+    Keywords = { fg = colors.purple },
+    Identifier = { fg = colors.cyan },
+    Function = { fg = colors.purple },
+    Statement = { fg = colors.magenta },
+    Conditional = { fg = colors.yellow },
+    Repeat = { fg = colors.orange },
+    Label = { fg = colors.cyan },
+    Exception = { fg = colors.purple },
+    PreProc = { fg = colors.yellow },
+    Include = { fg = colors.purple },
+    Define = { fg = colors.magenta },
+    Title = { fg = colors.cyan },
+    Macro = { fg = colors.purple },
+    PreCondit = { fg = colors.cyan },
+    Type = { fg = colors.cyan },
+    StorageClass = { fg = colors.magenta },
+    Structure = { fg = colors.yellow },
+    TypeDef = { fg = colors.yellow },
+    Special = { fg = colors.green, italic = true},
+    SpecialComment = { fg = colors.sky_m },
+    Error = { fg = colors.red },
+    Todo = { fg = colors.green, underline = true },
+    Underlined = { fg = colors.cyan, underline = true },
+
+    Cursor = { reverse = true },
+    CursorLineNr = { fg = colors.sky },
+
+    SignColumn = { bg = colors.shade },
+
+    Conceal = { fg = colors.sky_m },
+    CursorColumn = { bg = colors.shade_m },
+    CursorLine = { bg = colors.shade_p },
+    ColorColumn = { bg = colors.sun },
+
+    StatusLine = { fg = colors.sun_p },
+    StatusLineNC = { fg = colors.sky_m },
+    StatusLineTerm = { fg = colors.sun_p },
+    StatusLineTermNC = { fg = colors.sky_m },
+
+    Directory = { fg = colors.cyan },
+    DiffAdd = { fg = colors.shade, bg = colors.green },
+    DiffChange = { fg = colors.orange },
+    DiffDelete = { fg = colors.red },
+    DiffText = { fg = colors.sky_m },
+
+    ErrorMsg = { fg = colors.red },
+    VertSplit = { fg = colors.shade_m },
+    Folded = { fg = colors.sky_m },
+    FoldColumn = {},
+    Search = { fg = colors.shade_m, bg = colors.orange },
+    IncSearch = { fg = colors.orange, bg = colors.sky_m },
+    LineNr = { fg = colors.sky_m },
+    MatchParen = { fg = colors.sky, underline = true },
+    NonText = { fg = colors.shade_m },
+    Pmenu = { fg = colors.sky_p, bg = colors.shade_m },
+    PmenuSel = { fg = colors.sky_m, bg = colors.shade_p },
+    PmenuSbar = { fg = colors.shade },
+    PmenuThumb = { fg = colors.shade_p },
+
+    Question = { fg = colors.purple },
+    QuickFixLine = { fg = colors.shade_m, bg = colors.yellow },
+    SpecialKey = { fg = colors.shade_p },
+
+    SpellBad = { fg = colors.red, underline = true },
+    SpellCap = { fg = colors.yellow },
+    SpellLocal = { fg = colors.yellow },
+    SpellRare = { fg = colors.yellow },
+
+    TabLine = { fg = colors.sky_m },
+    TabLineSel = { fg = colors.sun_m },
+    TabLineFill = { fg = colors.shade },
+    Terminal = { fg = colors.sun_m, bg = colors.shade_m },
+    Visual = { bg = colors.shade_p },
+    VisualNOS = { bg = colors.shade_p },
+    WarningMsg = { fg = colors.yellow },
+    WildMenu = { fg = colors.shade_m },
+
+    EndOfBuffer = endOfBuffer,
+
+    -- Treesitter
+    ['@error'] = { fg = colors.red },
+    ['@punctuation.delimiter'] = { fg = colors.sky },
+    ['@punctuation.bracket'] = { fg = colors.sky },
+    ['@punctuation.special'] = { fg = colors.sky },
+
+    ['@constant'] = { fg = colors.blue },
+    ['@constant.builtin'] = { fg = colors.blue },
+
+    ['@constant.macro'] = { fg = colors.cyan },
+    ['@string.regex'] = { fg = colors.yellow },
+    ['@string'] = { fg = colors.green },
+    ['@string.escape'] = { fg = colors.cyan },
+    ['@character'] = { fg = colors.green },
+    ['@number'] = { fg = colors.yellow },
+    ['@boolean'] = { fg = colors.yellow },
+    ['@float'] = { fg = colors.yellow },
+    ['@annotation'] = { fg = colors.blue },
+    ['@attribute'] = { fg = colors.blue },
+    ['@namespace'] = { fg = colors.orange },
+
+    ['@function.builtin'] = { fg = colors.blue },
+    ['@function'] = { fg = colors.blue },
+    ['@function.macro'] = { fg = colors.blue },
+    ['@parameter'] = { fg = colors.red },
+    ['@parameter.reference'] = { fg = colors.red },
+    ['@method'] = { fg = colors.blue },
+    ['@field'] = { fg = colors.sky },
+    ['@property'] = { fg = colors.sky },
+    ['@constructor'] = { fg = colors.cyan },
+
+    ['@conditional'] = { fg = colors.purple },
+    ['@repeat'] = { fg = colors.purple },
+    ['@label'] = { fg = colors.magenta },
+
+    ['@keyword'] = { fg = colors.purple, italic = true },
+    ['@keyword.function'] = { fg = colors.purple },
+    ['@keyword.operator'] = { fg = colors.purple },
+    ['@operator'] = { fg = colors.sky_p },
+    ['@exception'] = { fg = colors.purple },
+    ['@type'] = { fg = colors.orange },
+    ['@type.builtin'] = { fg = colors.purple },
+    ['@structure'] = { fg = colors.magenta },
+    ['@include'] = { fg = colors.sky_p },
+
+    ['@variable'] = { fg = colors.magenta },
+    ['@variable.builtin'] = { fg = colors.red },
+
+    ['@text'] = { fg = colors.green },
+    ['@text.strong'] = { fg = colors.green },
+    ['@text.emphasis'] = { fg = colors.green, bold = true },
+    ['@text.underline'] = { fg = colors.green, underline = true },
+    ['@text.title'] = { fg = colors.purple },
+    ['@text.literal'] = { fg = colors.yellow },
+    ['@text.uri'] = { fg = colors.blue, italic = true },
+
+    ['@tag'] = { fg = colors.cyan },
+    ['@tag.attribute'] = { fg = colors.green },
+    ['@tag.delimiter'] = { fg = colors.cyan },
+
+    -- html
+    htmlArg = { fg = colors.red },
+    htmlBold = { fg = colors.red, bold = true },
+    htmlEndTag = { fg = colors.sky_p },
+    htmlH1 = { fg = colors.red },
+    htmlH2 = { fg = colors.red },
+    htmlH3 = { fg = colors.red },
+    htmlH4 = { fg = colors.red },
+    htmlH5 = { fg = colors.red },
+    htmlH6 = { fg = colors.red },
+    htmlItalic = { fg = colors.red, italic = true },
+    htmlLink = { fg = colors.blue, underline = true },
+    htmlSpecialChar = { fg = colors.red },
+    htmlSpecialTagName = { fg = colors.red },
+    htmlTag = { fg = colors.red },
+    htmlTagN = { fg = colors.red },
+    htmlTagName = { fg = colors.red },
+    htmlTitle = { fg = colors.red },
+
+    -- Markdown
+    markdownBlockquote = { fg = colors.green },
+    markdownBold = { fg = colors.yellow, bold = true },
+    markdownCode = { fg = colors.green },
+    markdownCodeBlock = { fg = colors.sky_p },
+    markdownCodeDelimiter = { fg = colors.red },
+    markdownH1 = { fg = colors.red, bold = true },
+    markdownH2 = { fg = colors.red, bold = true },
+    markdownH3 = { fg = colors.red, bold = true },
+    markdownH4 = { fg = colors.red, bold = true },
+    markdownH5 = { fg = colors.red, bold = true },
+    markdownH6 = { fg = colors.red, bold = true },
+    markdownHeadingDelimiter = { fg = colors.red },
+    markdownHeadingRule = { fg = colors.sky_m },
+    markdownId = { fg = colors.purple },
+    markdownIdDeclaration = { fg = colors.cyan },
+    markdownIdDelimiter = { fg = colors.purple },
+    markdownItalic = { fg = colors.purple, italic = true },
+    markdownLinkDelimiter = { fg = colors.purple, underline = true },
+    markdownLinkText = { fg = colors.blue },
+    markdownListMarker = { fg = colors.red },
+    markdownOrderedListMarker = {},
+    markdownRule = {},
+
+    -- Diff
+    diffAdded = { fg = colors.green },
+    diffRemoved = { fg = colors.red },
+    diffFileId = { fg = colors.yellow, bold = true, reverse = true },
+    diffFile = { fg = colors.shade_m },
+    diffNewFile = { fg = colors.green },
+    diffOldFile = { fg = colors.red },
+
+    debugPc = { bg = colors.cyan },
+    debugBreakpoint = { fg = colors.red, reverse = true },
+
+    -- builtin LSP
+    DiagnosticError = { fg = colors.red },
+    DiagnosticWarn = { fg = colors.yellow },
+    DiagnosticInfo = { fg = colors.cyan },
+    DiagnosticHint = { fg = colors.cyan },
+    DiagnosticUnderlineError = { undercurl = true, sp = colors.red },
+    DiagnosticUnderlineWarn = { undercurl = true, sp = colors.yellow },
+    DiagnosticUnderlineInfo = { undercurl = true, sp = colors.cyan },
+    DiagnosticUnderlineHint = { undercurl = true, sp = colors.cyan },
+    DiagnosticSignError = { fg = colors.red },
+    DiagnosticSignWarn = { fg = colors.yellow },
+    DiagnosticSignInfo = { fg = colors.cyan },
+    DiagnosticSignHint = { fg = colors.cyan },
+    DiagnosticFloatingError = { fg = colors.red },
+    DiagnosticFloatingWarn = { fg = colors.yellow },
+    DiagnosticFloatingInfo = { fg = colors.cyan },
+    DiagnosticFloatingHint = { fg = colors.cyan },
+    DiagnosticVirtualTextError = { fg = colors.red },
+    DiagnosticVirtualTextWarn = { fg = colors.yellow },
+    DiagnosticVIrtualTextInfo = { fg = colors.cyan },
+    DiagnosticVirtualTextHint = { fg = colors.cyan },
+
+    LspDiagnosticsDefaultError = { fg = colors.red },
+    LspDiagnosticsDefaultWarning = { fg = colors.yellow },
+    LspDiagnosticsDefaultInformation = { fg = colors.cyan },
+    LspDiagnosticsDefaultHint = { fg = colors.cyan },
+    LspDiagnosticsUnderlineError = { fg = colors.cyan },
+    LspDiagnosticsUnderlineWarning = { fg = colors.red, undercurl = true },
+    LspDiagnosticsUnderlineInformation = { fg = colors.yellow, undercurl = true },
+    LspDiagnosticsUnderlineHint = { fg = colors.cyan, undercurl = true },
+    LspReferenceText = { fg = colors.purple },
+    LspReferenceRead = { fg = colors.purple },
+    LspReferenceWrite = { fg = colors.purple },
+
+    -- Plugin support
+    -- Git Signs
+    GitSignsAdd = { fg = colors.green },
+    GitSignsChange = { fg = colors.cyan },
+    GitSignsDelete = { fg = colors.red },
+    GitSignsAddLn = { fg = colors.shade_m, bg = colors.green },
+    GitSignsChangeLn = { fg = colors.shade_m, bg = colors.cyan },
+    GitSignsDeleteLn = { fg = colors.shade_m, bg = colors.red },
+
+    -- Telescope
+    TelescopePromptBorder = { fg = colors.sky_m },
+    TelescopeResultsBorder = { fg = colors.sky_m },
+    TelescopePreviewBorder = { fg = colors.sky_m },
+    TelescopeSelection = { fg = colors.sky_m, bg = colors.sun },
+    TelescopeMultiSelection = { fg = colors.purple, bg = colors.sun },
+    TelescopeNormal = { fg = colors.sky, bg = colors.shade },
+    TelescopeMatching = { fg = colors.green },
+    TelescopePromptPrefix = { fg = colors.purple },
+
+    -- NvimTree
+    NvimTreeNormal = { fg = colors.sky, bg = colors.shade_m },
+    NvimTreeVertSplit = { fg = colors.shade, bg = colors.shade },
+    NvimTreeRootFolder = { fg = colors.sky, bold = true },
+    NvimTreeGitDirty = { fg = colors.yellow },
+    NvimTreeGitNew = { fg = colors.green },
+    NvimTreeImageFile = { fg = colors.cyan },
+    NvimTreeFolderIcon = { fg = colors.cyan },
+    NvimTreeIndentMarker = { fg = colors.sky_m },
+    NvimTreeEmptyFolderName = { fg = colors.sky_m },
+    NvimTreeFolderName = { fg = colors.sky },
+    NvimTreeSpecialFile = { fg = colors.magenta, underline = true },
+    NvimTreeOpenedFolderName = { fg = colors.sky },
+    NvimTreeCursorLine = { bg = colors.sun },
+    NvimTreeIn = { bg = colors.sun },
+
+    NvimTreeEndOfBuffer = endOfBuffer,
+
+    -- NeoTree
+    NeoTreeNormal = { fg = colors.sky },
+    NeoTreeNormalNC = { fg = colors.sky },
+    NeoTreeDirectoryName = { fg = colors.sky },
+    NeoTreeGitUnstaged = { fg = colors.yellow },
+    NeoTreeGitModified = { fg = colors.orange },
+    NeoTreeGitUntracked = { fg = colors.green },
+    NeoTreeDirectoryIcon = { fg = colors.cyan },
+    NeoTreeIndentMarker = { fg = colors.sky_m },
+    NeoTreeDotfile = { fg = colors.shade_p },
+
+    -- Bufferline
+    BufferLineIndicatorSelected = { fg = colors.shade },
+    BufferLineFill = { bg = colors.shade_m },
+
+    -- LspSaga
+    LspFloatWinNormal = { fg = colors.sky },
+    LspFloatWinBorder = { fg = colors.sky_m },
+    LspSagaHoverBorder = { fg = colors.sky_m },
+    LspSagaSignatureHelpBorder = { fg = colors.sky_m },
+    LspSagaCodeActionHover = { fg = colors.sky_m },
+    LspSagaDefPreviewBorder = { fg = colors.sky_m },
+    LspLinesDiagBorder = { fg = colors.sky_m },
+    LspSagaRenameBorder = { fg = colors.sky_m },
+    LspSagaBorderTitle = { fg = colors.sky_p },
+    LspSagaDiagnosticTruncateLine = { fg = colors.sky_m },
+    LspSagaDiagnosticBorder = { fg = colors.sky_m },
+    LspSagaShTruncateLine = { fg = colors.sky_m },
+    LspSagaDocTruncateLine = { fg = colors.sky_m },
+    LspSagaLspFinderBorder = { fg = colors.sky_m },
+
+    -- Indent blankline
+    IndentBlanklineContextChar = { fg = colors.red, nocombine = true },
+
+    -- barbar
+    BufferCurrentTarget = { fg = colors.red },
+    BufferVisibleTarget = { fg = colors.red },
+    BufferInactiveTarget = { fg = colors.red },
+
+    CompeDocumentation = { link = 'Pmenu'},
+    ConpeDocumentationBorder = { link = 'Pmenu' },
+
+    -- nvim-cmp
+    CmpItemAbbrDeprecated = { fg = colors.sun_m, bg = colors.shade_p },
+    CmpItemAbbrMatch = { fg = colors.cyan, bg = colors.shade_p },
+
+    CmpItemKind = { link = 'Pmenu' },
+    CmpItemAbbr = { link = 'Pmenu' },
+    CmpItemKindMethod = { link = 'TSMethod' },
+    CmpItemKindText = { link = 'TSText' },
+    CmpItemKindFunction = { link = 'TSFunction' },
+    CmpItemKindConstructor = { link = 'TSType' },
+    CmpItemKindVariable = { link = 'TSVariable' },
+    CmpItemKindClass = { link = 'TSType' },
+    CmpItemKindInterface = { link = 'TSType' },
+    CmpItemKindModule = { link = 'TSNamespace' },
+    CmpItemKindProperty = { link = 'TSProperty' },
+    CmpItemKindOperator = { link = 'TSOperator' },
+    CmpItemKindReference = { link = 'TSParameterReference' },
+    CmpItemKindUnit = { link = 'TSField' },
+    CmpItemKindValue = { link = 'TSField' },
+    CmpItemKindField = { link = 'TSField' },
+    CmpItemKindEnum = { link = 'TSField' },
+    CmpItemKindKeyword = { link = 'TSKeyword' },
+    CmpItemKindSnippet = { link = 'TSText' },
+    CmpItemKindColor = { link = 'cssColor' },
+    CmpItemKindFile = { link = 'TSURI' },
+    CmpItemKindFolder = { link = 'TSURI' },
+    CmpItemKindEvent = { link = 'TSConstant' },
+    CmpItemKindEnumMember = { link = 'TSField' },
+    CmpItemKindConstant = { link = 'TSConstant' },
+    CmpItemKindStruct = { link = 'TSStructure' },
+    CmpItemKindTypeParameter = { link = 'TSParameter' },
+
+    -- Navic
+    -- NavicIconsFile = { link =  'CmpItemKindFile' },
+    -- NavicIconsModule = { link = 'CmpItemKindModule' },
+    -- NavicIconsNamespace = { link = 'CmpItemKindModule' },
+    -- NavicIconsPackage = { link = 'CmpItemKindModule' },
+  }
+end
+
+return {
+  setup = setup
+}
