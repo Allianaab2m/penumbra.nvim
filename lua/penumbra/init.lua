@@ -48,27 +48,16 @@ end
 --@param configs DefaultConfig
 local function apply(configs)
   local colors = configs.colors
-  local groups = require('penumbra.groups')
 
-  if configs.contrast == 'plus' then
+  if (configs.contrast == 'plus') then
    colors = palette.contrast_p
-  elseif configs.contrast == 'plusplus' then
+  elseif (configs.contrast == 'plusplus') then
    colors = palette.contrast_pp
   end
 
-  if configs.light then
-    local base_palettes = colors
-    colors.sun_p = base_palettes.shade_m
-    colors.sun = base_palettes.shade
-    colors.sun_m = base_palettes.shade_p
-    colors.sky_p = base_palettes.sky_m
-    colors.sky_m = base_palettes.sky_p
-    colors.shade_p = base_palettes.sun_m
-    colors.shade = base_palettes.sun
-    colors.shade_m = base_palettes.sun_p
-  end
-
   apply_term_colors(colors)
+  configs.colors = colors
+  local groups = require('penumbra.groups').setup(configs)
 
   if configs.transparent_bg then
     for _, group in ipairs(TRANSPARENTS) do
