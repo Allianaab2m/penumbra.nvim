@@ -167,7 +167,7 @@ local function setup(configs)
     ['@type'] = { fg = colors.orange },
     ['@type.builtin'] = { fg = colors.purple },
     ['@structure'] = { fg = colors.magenta },
-    ['@include'] = { fg = colors.sky_p },
+    ['@include'] = { fg = colors.blue },
 
     ['@variable'] = { fg = colors.magenta },
     ['@variable.builtin'] = { fg = colors.red },
