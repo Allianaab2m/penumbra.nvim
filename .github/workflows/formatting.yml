@@ -9,4 +9,4 @@ jobs:
       - uses: JohnnyMorganz/stylua-action@v1.1.1
         with:
           token: ${{ secrets.GH_TOKEN }}
-          args: --check --config-path=stylua.toml .
+          args: --config-path=stylua.toml .
