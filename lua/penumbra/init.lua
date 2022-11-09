@@ -25,34 +25,34 @@ local TRANSPARENTS = {
 }
 
 local function apply_term_colors(colors)
-  g.terminal_color_0=colors.shade_m
-  g.terminal_color_1=colors.red
-  g.terminal_color_2=colors.green
-  g.terminal_color_3=colors.yellow
-  g.terminal_color_4=colors.purple
-  g.terminal_color_5=colors.magenta
-  g.terminal_color_6=colors.cyan
-  g.terminal_color_7=colors.sun
-  g.terminal_color_8=colors.sun_m
-  g.terminal_color_9=colors.red
-  g.terminal_color_10=colors.green
-  g.terminal_color_11=colors.yellow
-  g.terminal_color_12=colors.blue
-  g.terminal_color_13=colors.magenta
-  g.terminal_color_14=colors.cyan
-  g.terminal_color_15=colors.sun_p
-  g.terminal_color_background=colors.shade
-  g.terminal_color_foreground=colors.sky
+  g.terminal_color_0 = colors.shade_m
+  g.terminal_color_1 = colors.red
+  g.terminal_color_2 = colors.green
+  g.terminal_color_3 = colors.yellow
+  g.terminal_color_4 = colors.purple
+  g.terminal_color_5 = colors.magenta
+  g.terminal_color_6 = colors.cyan
+  g.terminal_color_7 = colors.sun
+  g.terminal_color_8 = colors.sun_m
+  g.terminal_color_9 = colors.red
+  g.terminal_color_10 = colors.green
+  g.terminal_color_11 = colors.yellow
+  g.terminal_color_12 = colors.blue
+  g.terminal_color_13 = colors.magenta
+  g.terminal_color_14 = colors.cyan
+  g.terminal_color_15 = colors.sun_p
+  g.terminal_color_background = colors.shade
+  g.terminal_color_foreground = colors.sky
 end
 
 --@param configs DefaultConfig
 local function apply(configs)
   local colors = configs.colors
 
-  if (configs.contrast == 'plus') then
-   colors = palette.contrast_p
-  elseif (configs.contrast == 'plusplus') then
-   colors = palette.contrast_pp
+  if configs.contrast == 'plus' then
+    colors = palette.contrast_p
+  elseif configs.contrast == 'plusplus' then
+    colors = palette.contrast_pp
   end
 
   apply_term_colors(colors)
@@ -72,7 +72,6 @@ local function apply(configs)
   for group, setting in pairs(groups) do
     nvim_set_hl(0, group, setting)
   end
-
 end
 
 local local_configs = DEFAULT_CONFIG
@@ -99,7 +98,7 @@ local function load()
 
   o.background = 'dark'
   o.termguicolors = true
-  g.colors_name='penumbra'
+  g.colors_name = 'penumbra'
 
   apply(local_configs)
 end
@@ -107,10 +106,10 @@ end
 return {
   load = load,
   setup = setup,
-  configs = function ()
+  configs = function()
     return local_configs
   end,
-  colors = function ()
+  colors = function()
     return local_configs.colors
-  end
+  end,
 }

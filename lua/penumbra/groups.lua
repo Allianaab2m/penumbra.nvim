@@ -6,7 +6,7 @@ local function setup(configs)
   if configs.light then
     colors = {
       sun_p = configs.colors.shade_m,
-      sun =  configs.colors.shade,
+      sun = configs.colors.shade,
       sun_m = configs.colors.shade_p,
       sky_p = configs.colors.sky_m,
       sky = configs.colors.sky,
@@ -24,13 +24,12 @@ local function setup(configs)
       purple = configs.colors.purple,
       magenta = configs.colors.magenta,
       bg = configs.colors.sun,
-      fg = configs.colors.sky
+      fg = configs.colors.sky,
     }
   end
 
-
   local endOfBuffer = {
-    fg = configs.show_end_of_buffer and colors.visual or colors.bg
+    fg = configs.show_end_of_buffer and colors.visual or colors.bg,
   }
 
   return {
@@ -64,7 +63,7 @@ local function setup(configs)
     StorageClass = { fg = colors.magenta },
     Structure = { fg = colors.yellow },
     TypeDef = { fg = colors.yellow },
-    Special = { fg = colors.green, italic = true},
+    Special = { fg = colors.green, italic = true },
     SpecialComment = { fg = colors.sky_m },
     Error = { fg = colors.red },
     Todo = { fg = colors.green, underline = true },
@@ -349,7 +348,7 @@ local function setup(configs)
     BufferVisibleTarget = { fg = colors.red },
     BufferInactiveTarget = { fg = colors.red },
 
-    CompeDocumentation = { link = 'Pmenu'},
+    CompeDocumentation = { link = 'Pmenu' },
     ConpeDocumentationBorder = { link = 'Pmenu' },
 
     -- nvim-cmp
@@ -393,5 +392,5 @@ local function setup(configs)
 end
 
 return {
-  setup = setup
+  setup = setup,
 }
